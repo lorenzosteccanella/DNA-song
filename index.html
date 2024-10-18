@@ -66,6 +66,9 @@
             border-radius: 8px;
             min-height: 40px;
         }
+        .action-buttons {
+            margin-top: 20px;
+        }
         footer {
             margin-top: 40px;
             font-size: 0.8em;
@@ -87,8 +90,11 @@
         </div>
 
         <div class="sequence-display" id="sequence-display">Your sequence: </div>
-        <br><br>
-        <button onclick="playDNAMusic()">Play Music</button>
+
+        <div class="action-buttons">
+            <button onclick="playDNAMusic()">Play Music</button>
+            <button onclick="clearSequence()">Clear Sequence</button>
+        </div>
     </div>
 
     <footer>
