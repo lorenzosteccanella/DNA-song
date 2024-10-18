@@ -71,3 +71,9 @@ function playDNAMusic() {
         currentTime += noteDuration + pauseDuration;
     });
 }
+
+// Function to clear the current DNA sequence and reset the display
+function clearSequence() {
+    dnaSequence = '';
+    document.getElementById('sequence-display').innerHTML = 'Your sequence: ';
+}
