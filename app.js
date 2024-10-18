@@ -1,3 +1,6 @@
+// Initialize an empty DNA sequence
+let dnaSequence = '';
+
 // Define smooth frequencies for each nucleotide (based on C major scale)
 const soundMap = {
     'A': 261.63,  // C4 (Middle C)
@@ -6,10 +9,15 @@ const soundMap = {
     'G': 349.23   // F4
 };
 
-// Function to restrict input to A, T, C, G only
-function validateInput() {
-    const inputField = document.getElementById('dna-sequence');
-    inputField.value = inputField.value.toUpperCase().replace(/[^ATCG]/g, '');  // Remove non-ATCG characters
+// Function to add nucleotides to the sequence when a button is clicked
+function addNucleotide(nucleotide) {
+    if (dnaSequence.length >= 20) {
+        alert('DNA sequence can only be up to 20 nucleotides long.');
+        return;
+    }
+
+    dnaSequence += nucleotide;
+    document.getElementById('dna-sequence').innerHTML = `Your sequence: ${dnaSequence}`;
 }
 
 // Function to play a smooth tone for a given frequency and duration
@@ -39,11 +47,8 @@ function playSmoothTone(frequency, duration, context, startTime) {
 
 // Function to convert the DNA sequence to music with pauses between notes
 function playDNAMusic() {
-    const dnaInput = document.getElementById('dna-sequence').value.toUpperCase();
-    const dnaSequence = dnaInput.replace(/[^ATCG]/g, '');  // Ensure only valid ATCG characters
-
     if (!dnaSequence.length) {
-        alert('Please enter a valid DNA sequence with only A, T, C, G characters.');
+        alert('Please create a DNA sequence first by clicking the buttons.');
         return;
     }
 
