@@ -9,7 +9,7 @@ const pleasantSoundMap = {
     'GC': 349.23   // F4
 };
 
-const unpleasantSoundFrequency = 150; // Frequency for unpleasant sounds (a low grating sound)
+const unpleasantSoundFrequency = 220; // Less harsh frequency for unpleasant sounds
 
 // Function to add nucleotides to the sequence when a button is clicked
 function addNucleotide(nucleotide) {
@@ -36,11 +36,13 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
     // Set the frequency for the oscillator
     oscillator.frequency.value = frequency;
 
-    // Smooth fade-out for pleasant, harsher cut for unpleasant sounds
+    // Smooth fade-out for pleasant, softer for unpleasant sounds
     gainNode.gain.setValueAtTime(1, startTime);
+
     if (isPleasant) {
         gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
     } else {
+        gainNode.gain.setValueAtTime(0.3, startTime); // Lower gain for unpleasant sounds (30% volume)
         gainNode.gain.linearRampToValueAtTime(0.001, startTime + duration);
     }
 
