@@ -32,7 +32,7 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
     gainNode.connect(context.destination);
 
     // Set the oscillator waveform type
-    oscillator.type = isPleasant ? 'sine' : 'triangle'; // Pleasant pairs use 'sine', invalid pairs use 'triangle'
+    oscillator.type = isPleasant ? 'sine' : 'sawtooth'; // Pleasant pairs use 'sine', invalid pairs use 'triangle'
 
     // Set the frequency for the oscillator
     oscillator.frequency.value = frequency;
