@@ -32,6 +32,7 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            justify-content: center; /* Center the buttons */
         }
         button {
             padding: 12px 24px;
@@ -87,6 +88,8 @@
         <h1>DNA Music Generator 🎶</h1>
         <p>Click the buttons to build your DNA sequence:</p>
 
+        <p id="target-display">Target DNA Sequence: <span style="font-weight: bold; color: #4CAF50;">ATGCGTACGATACGTCAGTA</span></p>
+
         <div class="buttons">
             <button onclick="addNucleotide('A')">A</button>
             <button onclick="addNucleotide('T')">T</button>
@@ -100,8 +103,6 @@
             <button onclick="playDNAMusic()">Play Music</button>
             <button onclick="clearSequence()">Clear Sequence</button>
         </div>
-
-        <p id="target-display">Target DNA Sequence: <span style="font-weight: bold; color: #4CAF50;">ATGCGTACGATACGTCAGTA</span></p>
     </div>
 
     <footer>
