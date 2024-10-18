@@ -42,7 +42,7 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
     if (isPleasant) {
         gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
     } else {
-        gainNode.gain.setValueAtTime(0.2, startTime); // Lower gain for unpleasant sounds (20% volume)
+        gainNode.gain.setValueAtTime(0.4, startTime); // Lower gain for unpleasant sounds (20% volume)
         gainNode.gain.linearRampToValueAtTime(0.001, startTime + duration);
     }
 
