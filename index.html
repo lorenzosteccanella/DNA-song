@@ -28,13 +28,10 @@
             color: #FF5722;
             margin-bottom: 20px;
         }
-        input[type="text"] {
-            width: 300px;
-            padding: 10px;
-            font-size: 1.2em;
-            border-radius: 8px;
-            border: 2px solid #4CAF50;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         button {
             padding: 12px 24px;
@@ -59,11 +56,15 @@
             width: 90%;
             max-width: 500px;
         }
-        .note-display {
+        .sequence-display {
             margin-top: 20px;
             font-size: 1.5em;
             color: #FF5722;
             font-weight: bold;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            border-radius: 8px;
+            min-height: 40px;
         }
         footer {
             margin-top: 40px;
@@ -76,11 +77,18 @@
 
     <div class="container">
         <h1>DNA Music Generator 🎶</h1>
-        <p>Enter a DNA sequence (A, T, C, G):</p>
-        <input type="text" id="dna-sequence" placeholder="e.g., ATCGTACG..." maxlength="20">
+        <p>Click the buttons to build your DNA sequence:</p>
+
+        <div class="buttons">
+            <button onclick="addNucleotide('A')">A</button>
+            <button onclick="addNucleotide('T')">T</button>
+            <button onclick="addNucleotide('C')">C</button>
+            <button onclick="addNucleotide('G')">G</button>
+        </div>
+
+        <div class="sequence-display" id="dna-sequence">Your sequence: </div>
         <br><br>
         <button onclick="playDNAMusic()">Play Music</button>
-        <div class="note-display" id="note-display"></div>
     </div>
 
     <footer>
