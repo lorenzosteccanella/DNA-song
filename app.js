@@ -9,7 +9,7 @@ const pleasantSoundMap = {
     'GC': 349.23   // F4
 };
 
-const unpleasantSoundFrequency = 220; // Less harsh frequency for unpleasant sounds
+const unpleasantSoundFrequency = 440; // Higher frequency for unpleasant sounds
 
 // Function to add nucleotides to the sequence when a button is clicked
 function addNucleotide(nucleotide) {
@@ -31,7 +31,7 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
     gainNode.connect(context.destination);
 
     // Set the oscillator waveform type
-    oscillator.type = isPleasant ? 'sine' : 'square'; // Pleasant pairs use 'sine', invalid pairs use 'square'
+    oscillator.type = isPleasant ? 'sine' : 'sawtooth'; // Pleasant pairs use 'sine', invalid pairs use 'sawtooth'
 
     // Set the frequency for the oscillator
     oscillator.frequency.value = frequency;
@@ -42,7 +42,7 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
     if (isPleasant) {
         gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
     } else {
-        gainNode.gain.setValueAtTime(0.3, startTime); // Lower gain for unpleasant sounds (30% volume)
+        gainNode.gain.setValueAtTime(0.2, startTime); // Lower gain for unpleasant sounds (20% volume)
         gainNode.gain.linearRampToValueAtTime(0.001, startTime + duration);
     }
 
