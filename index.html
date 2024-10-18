@@ -9,36 +9,56 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background-color: #f0f8ff; /* Light background */
+        }
+        h1 {
+            color: #4a90e2; /* Heading color */
+            font-size: 36px;
+            margin-bottom: 20px;
         }
         button {
             margin: 5px;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4a90e2; /* Change color on hover */
+            color: white; /* Text color on hover */
         }
         #sequence-display {
             margin-top: 20px;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
+            color: #333;
         }
         #target-sequence {
             margin-top: 20px;
-            font-size: 20px;
-            color: blue;
+            font-size: 24px;
+            color: #e94e77; /* Target sequence color */
             font-weight: bold;
+        }
+        #instruction {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #666; /* Instruction text color */
         }
     </style>
 </head>
 <body>
     <h1>DNA Music Creator</h1>
-    <p>Click to add nucleotides to create a matching sequence!</p>
+    <p id="instruction">Click to add nucleotides to create a matching sequence!</p>
     
     <!-- Display the target DNA sequence -->
-    <div id="target-sequence">Target DNA Sequence: ATGCGTACGATACGTCAGTA</div>
+    <div id="target-sequence">Target DNA Sequence: <span id="target-sequence-text">ATGCGTACGATACGTCAGTA</span></div>
 
-    <button onclick="addNucleotide('A')">A</button>
-    <button onclick="addNucleotide('T')">T</button>
-    <button onclick="addNucleotide('C')">C</button>
-    <button onclick="addNucleotide('G')">G</button>
+    <button onclick="addNucleotide('A')">Add A</button>
+    <button onclick="addNucleotide('T')">Add T</button>
+    <button onclick="addNucleotide('C')">Add C</button>
+    <button onclick="addNucleotide('G')">Add G</button>
     <button onclick="playDNAMusic()">Play Sequence</button>
     <button onclick="clearSequence()">Clear Sequence</button>
     
