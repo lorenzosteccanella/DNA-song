@@ -8,14 +8,14 @@ const targetDNASequence = "ATGCGTACGATACGTCAGTA";
 const pleasantSoundMap = {
     'AT': 261.63,  // C4 (Middle C)
     'TA': 293.66,  // D4
-    'GC': 329.63,  // E4
-    'CG': 349.23   // F4
+    'CG': 329.63,  // E4
+    'GC': 349.23   // F4
 };
 
 // Function to add nucleotides to the sequence when a button is clicked
 function addNucleotide(nucleotide) {
     if (userDNASequence.length >= 20) {
-        alert('DNA sequence can only be up to 20 nucleotides long.'); // Keep this alert for length limitation
+        alert('DNA sequence can only be up to 20 nucleotides long.');
         return;
     }
 
@@ -37,9 +37,8 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
     // Set the frequency for the oscillator
     oscillator.frequency.value = frequency;
 
-    // Smooth fade-out for pleasant, softer for unpleasant sounds
+    // Smooth fade-out for pleasant sounds
     gainNode.gain.setValueAtTime(1, startTime);
-    
     if (isPleasant) {
         gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
     } else {
@@ -54,39 +53,37 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
 
 // Function to play the user's DNA sequence music based on nucleotide pairs
 function playDNAMusic() {
-    if (userDNASequence.length < 2) {
-        alert('Please create a DNA sequence with at least 2 nucleotides.'); // Keep this alert for minimum length
-        return;
-    }
-
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     let currentTime = audioContext.currentTime;
     const noteDuration = 0.4;  // Duration of each note in seconds
     const pauseDuration = 0.1;  // Pause between notes
 
-    // Process the sequence in pairs of nucleotides
-    for (let i = 0; i < userDNASequence.length; i += 2) {
-        const pair = userDNASequence.slice(i, i + 2);
+    // Process the sequence nucleotide by nucleotide
+    for (let i = 0; i < userDNASequence.length; i++) {
+        if (i >= targetDNASequence.length) {
+            break; // Stop if we've reached the end of the target sequence
+        }
+        const userNucleotide = userDNASequence[i];
+        const targetNucleotide = targetDNASequence[i];
 
-        if (pair.length === 2) {
-            // Check if the pair is valid against the target sequence
-            const validPair = (pair === "AT" && targetDNASequence[i] === "A") ||
-                              (pair === "TA" && targetDNASequence[i] === "T") ||
-                              (pair === "GC" && targetDNASequence[i] === "G") ||
-                              (pair === "CG" && targetDNASequence[i] === "C");
+        // Determine the pair
+        let pair = '';
+        if (targetNucleotide === 'A' && userNucleotide === 'T') {
+            pair = 'AT';
+        } else if (targetNucleotide === 'T' && userNucleotide === 'A') {
+            pair = 'TA';
+        } else if (targetNucleotide === 'C' && userNucleotide === 'G') {
+            pair = 'CG';
+        } else if (targetNucleotide === 'G' && userNucleotide === 'C') {
+            pair = 'GC';
+        }
 
-            if (validPair) {
-                // If it's a valid pair, play the pleasant sound
-                const frequency = pleasantSoundMap[pair];
-                playTone(frequency, noteDuration, audioContext, currentTime, true);
-            } else {
-                // Invalid pair, play an unpleasant sound
-                playTone(330, noteDuration, audioContext, currentTime, false); // Use a frequency for unpleasant sound
-            }
+        // Check if it's a valid pair and play the corresponding sound
+        if (pair in pleasantSoundMap) {
+            const frequency = pleasantSoundMap[pair];
+            playTone(frequency, noteDuration, audioContext, currentTime, true); // Pleasant sound
         } else {
-            // If the pair is incomplete, we can choose to ignore or handle it differently
-            // Here we can just continue to the next iteration
-            continue;
+            playTone(330, noteDuration, audioContext, currentTime, false); // Unpleasant sound for invalid pairs
         }
 
         // Increase time for the next note, including the pause
