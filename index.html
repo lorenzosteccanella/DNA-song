@@ -77,7 +77,7 @@
     <div class="container">
         <h1>DNA Music Generator 🎶</h1>
         <p>Enter a DNA sequence (A, T, C, G):</p>
-        <input type="text" id="dna-sequence" placeholder="e.g., ATCGTACG..." maxlength="20">
+        <input type="text" id="dna-sequence" placeholder="Enter DNA (A, T, C, G only)" maxlength="20" oninput="validateInput()">
         <br><br>
         <button onclick="playDNAMusic()">Play Music</button>
         <div class="note-display" id="note-display"></div>
