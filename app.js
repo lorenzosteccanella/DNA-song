@@ -32,7 +32,7 @@ function playTone(frequency, duration, context, startTime, isPleasant) {
     gainNode.connect(context.destination);
 
     // Set the oscillator waveform type
-    oscillator.type = isPleasant ? 'sine' : 'sawtooth'; // Pleasant pairs use 'sine', invalid pairs use 'triangle'
+    oscillator.type = isPleasant ? 'sine' : 'square'; // Pleasant pairs use 'sine', invalid pairs use 'triangle'
 
     // Set the frequency for the oscillator
     oscillator.frequency.value = frequency;
@@ -83,7 +83,7 @@ function playDNAMusic() {
             const frequency = pleasantSoundMap[pair];
             playTone(frequency, noteDuration, audioContext, currentTime, true); // Pleasant sound
         } else {
-            playTone(220, noteDuration, audioContext, currentTime, false); // Unpleasant sound for invalid pairs
+            playTone(330, noteDuration, audioContext, currentTime, false); // Unpleasant sound for invalid pairs
         }
 
         // Increase time for the next note, including the pause
