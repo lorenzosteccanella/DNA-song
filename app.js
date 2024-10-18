@@ -17,7 +17,7 @@ function addNucleotide(nucleotide) {
     }
 
     dnaSequence += nucleotide;
-    document.getElementById('sequence-display').innerHTML = `Your sequence: ${dnaSequence}`;
+    document.getElementById('sequence-display').textContent = `Your sequence: ${dnaSequence}`;
 }
 
 // Function to play a smooth tone for a given frequency and duration
@@ -75,5 +75,5 @@ function playDNAMusic() {
 // Function to clear the current DNA sequence and reset the display
 function clearSequence() {
     dnaSequence = '';
-    document.getElementById('sequence-display').innerHTML = 'Your sequence: ';
+    document.getElementById('sequence-display').textContent = 'Your sequence: ';
 }
