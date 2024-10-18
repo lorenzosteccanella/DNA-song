@@ -43,8 +43,8 @@ function playDNAMusic() {
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
     let currentTime = audioContext.currentTime;
-    const noteDuration = 0.4;  // Duration of each sound in seconds
-    const pauseDuration = 0.1; // Pause between notes in seconds
+    const noteDuration = 0.1;  // Duration of each sound in seconds
+    const pauseDuration = 1; // Pause between notes in seconds
 
     dnaSequence.split('').forEach((nucleotide) => {
         const frequencies = soundMap[nucleotide];
