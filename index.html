@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNA Music Generator</title>
+    <title>DNA Music Generator 🎶</title>
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
-            margin: 50px;
+            margin: 0;
+            padding: 0;
             background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
         h1 {
             color: #4CAF50;
             font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 1.2em;
+            color: #FF5722;
+            margin-bottom: 20px;
         }
         input[type="text"] {
             width: 300px;
@@ -21,6 +34,7 @@
             font-size: 1.2em;
             border-radius: 8px;
             border: 2px solid #4CAF50;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         button {
             padding: 12px 24px;
@@ -30,26 +44,48 @@
             border: none;
             border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         button:hover {
             background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 500px;
         }
         .note-display {
             margin-top: 20px;
             font-size: 1.5em;
             color: #FF5722;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #888;
         }
     </style>
 </head>
 <body>
 
-    <h1>DNA Music Generator 🎶</h1>
-    <p>Enter a DNA sequence (A, T, C, G):</p>
-    <input type="text" id="dna-sequence" placeholder="e.g., ATCGTACG..." maxlength="20">
-    <br><br>
-    <button onclick="playDNAMusic()">Play Music</button>
-    <div class="note-display" id="note-display"></div>
+    <div class="container">
+        <h1>DNA Music Generator 🎶</h1>
+        <p>Enter a DNA sequence (A, T, C, G):</p>
+        <input type="text" id="dna-sequence" placeholder="e.g., ATCGTACG..." maxlength="20">
+        <br><br>
+        <button onclick="playDNAMusic()">Play Music</button>
+        <div class="note-display" id="note-display"></div>
+    </div>
+
+    <footer>
+        Made for curious kids! 🌟
+    </footer>
 
     <script src="app.js"></script>
 
