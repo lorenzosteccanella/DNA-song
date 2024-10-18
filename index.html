@@ -3,31 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNA to Music</title>
+    <title>DNA Music Generator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
             margin: 50px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 3em;
         }
         input[type="text"] {
             width: 300px;
             padding: 10px;
-            margin-bottom: 10px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            border: 2px solid #4CAF50;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .note-display {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #FF5722;
         }
     </style>
 </head>
 <body>
 
-    <h1>DNA to Music Converter</h1>
+    <h1>DNA Music Generator 🎶</h1>
     <p>Enter a DNA sequence (A, T, C, G):</p>
-    <input type="text" id="dna-sequence" placeholder="e.g., ATCGTACG...">
-    <br>
+    <input type="text" id="dna-sequence" placeholder="e.g., ATCGTACG..." maxlength="20">
+    <br><br>
     <button onclick="playDNAMusic()">Play Music</button>
+    <div class="note-display" id="note-display"></div>
 
     <script src="app.js"></script>
 
