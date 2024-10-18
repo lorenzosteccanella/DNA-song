@@ -17,7 +17,7 @@ function addNucleotide(nucleotide) {
     }
 
     dnaSequence += nucleotide;
-    document.getElementById('dna-sequence').innerHTML = `Your sequence: ${dnaSequence}`;
+    document.getElementById('sequence-display').innerHTML = `Your sequence: ${dnaSequence}`;
 }
 
 // Function to play a smooth tone for a given frequency and duration
