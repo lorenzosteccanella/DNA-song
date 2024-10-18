@@ -83,7 +83,7 @@ function playDNAMusic() {
             const frequency = pleasantSoundMap[pair];
             playTone(frequency, noteDuration, audioContext, currentTime, true); // Pleasant sound
         } else {
-            playTone(330, noteDuration, audioContext, currentTime, false); // Unpleasant sound for invalid pairs
+            playTone(420, noteDuration, audioContext, currentTime, false); // Unpleasant sound for invalid pairs
         }
 
         // Increase time for the next note, including the pause
